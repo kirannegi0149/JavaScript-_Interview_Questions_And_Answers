@@ -1,0 +1,356 @@
+
+1) Difference between “ == “ and “ === “ operators.
+
+== -> Double equals (==) is a comparison operator, which transforms the operands having the same type before comparison.
+
+So, when we compare string with a number, JavaScript converts any string to a number. An empty string is always converts to zero. A string with no numeric value is converts to NaN (Not a Number), which returns false.
+
+=== -> === (Triple equals) is a strict equality comparison operator in JavaScript, which returns false for the values which are not of a similar type. This operator performs type casting for equality. If we compare 2 with “2” using ===, then it will return a false value.
+
+Example- 
+ 
+console.log("7"==7) // true (because "7" converts to a number)
+console.log("7"===7) //false (because types are different: number vs. string)
+
+2) What are the differences between var, let and const?
+
+var: Function-scoped (only accessible inside the function where it is declared).
+     Can be reassigned and redeclared.
+     Hoisted to the top of its scope with an undefined value.
+     Use var only in legacy code (not recommended for modern JavaScript).
+
+let: Can be reassigned but cannot be redeclared within the same scope.
+     Hoisted but remains in a "temporal dead zone" until it is assigned.
+     Use let when the variable value needs to change.
+
+const: Block-scoped like let.
+       Cannot be reassigned or redeclared. The value is fixed after initialization.
+       Also hoisted but stays in the "temporal dead zone" until it is initialized.
+       Use const for constants or values that shouldn’t change.
+	
+Example : 
+var num=20;
+var num=90;
+console.log(num);
+
+let num1=50;
+num1=30;
+console.log(num1);
+
+const num2=69;
+//num2=50;
+console.log(num2);
+
+3) What is execution context?What is creation phase and execution phase?
+
+Execution context is an environment in which JavaScript code is executed. It contains variables, functions, and the this value relevant to the current execution phase.
+
+Execution Context Lifecycle
+---------------------------
+Each execution context goes through three phases:
+
+i) Creation Phase
+
+A new execution context is created.
+The Variable Environment is set up:
+Variables declared with var are hoisted and set to undefined.
+let and const are hoisted but stay in the Temporal Dead Zone (TDZ).
+Functions are hoisted with their full definition.
+this is determined (depends on how the function is called).
+
+ii) Execution Phase
+
+Code inside the execution context runs.
+Variables get assigned values.
+Functions are executed.
+
+iii) Destruction Phase
+
+Once execution is complete, the function execution context is removed from the Call Stack.
+Global execution context remains until the program ends.
+
+4) What is hoisting?
+
+Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before the code is executed. This means you can use variables and functions before they are declared in the code.
+
+How Hoisting Works:
+-------------------
+i) Variable Hoisting
+
+Variables declared with var are hoisted but initialized as undefined.
+Variables declared with let and const are hoisted but stay in the Temporal Dead Zone (TDZ) until initialized.
+
+ii) Function Hoisting
+
+Function declarations are hoisted with their full definition.
+Function expressions (assigned to variables) are hoisted but behave like variables.
+
+5) Difference between undefined vs not defined vs NaN?
+
+NaN: Not a number: As the name implies, it is used to denote that the value of an object is not a number. There are many ways that you can generate this error, one being invalid math opertaions such as 0/0 or sqrt(-1).
+
+undefined: It means that the object doesn't have any value, therefore undefined. This occurs when you create a variable and don't assign a value to it.
+
+null: It means that the object is empty and isn't pointing to any memory address.
+
+6) How many operators do we have in JS ? 
+
+There are different types of JavaScript operators:
+
+Arithmetic Operators
+Assignment Operators
+Comparison Operators
+String Operators
+Logical Operators
+Bitwise Operators
+Ternary Operators
+Type Operators
+
+i) Arithmetic Operators
+let a = 10;
+let b = 5;
+
+console.log(a + b);  // Addition: 10 + 5 = 15
+console.log(a - b);  // Subtraction: 10 - 5 = 5
+console.log(a * b);  // Multiplication: 10 * 5 = 50
+console.log(a / b);  // Division: 10 / 5 = 2
+console.log(a % b);  // Modulus: 10 % 5 = 0 (Remainder)
+console.log(a ** b); // Exponentiation: 10^5 = 100000
+
+ii) Comparison Operators
+let a1 = 10;
+let b1 = 5;
+let c = "10";
+
+console.log(a1 == c);   // Equal to (Loose Equality) -> true (checks only value)
+console.log(a1 === c);  // Strict Equal to -> false (checks value and type)
+console.log(a1 != b);   // Not Equal to -> true
+console.log(a1 !== c);  // Strict Not Equal to -> true (checks value and type)
+
+console.log(a1 > b1);    // Greater than -> true
+console.log(a1 < b1);    // Less than -> false
+console.log(a1 >= 10);  // Greater than or equal to -> true
+console.log(b1 <= 5);   // Less than or equal to -> true
+
+iii) Bitwise Operator
+let num1 = 5;   // Binary:  0101
+let num2 = 3;   // Binary:  0011
+
+console.log(num1 & num2);  // Bitwise AND -> 0101 & 0011 = 0001 (1)
+console.log(num1 | num2);  // Bitwise OR  -> 0101 | 0011 = 0111 (7)
+console.log(num1 ^ num2);  // Bitwise XOR -> 0101 ^ 0011 = 0110 (6)
+console.log(~num1);        // Bitwise NOT -> ~0101 = 1010 (-6)
+console.log(num1 << 1);    // Left Shift  -> 0101 << 1 = 1010 (10)
+console.log(num1 >> 1);    // Right Shift -> 0101 >> 1 = 0010 (2)
+console.log(num1 >>> 1);   // Zero-fill Right Shift -> 0101 >>> 1 = 0010 (2)
+
+iv) postfix increment and prefix increment
+
+let num3 = 5;
+let num4 = 10;
+
+// Pre-increment: Increments first, then returns the new value
+console.log(++num3);  // Output: 6
+console.log(num3);    // Output: 6 (value is updated)
+
+// Post-increment: Returns the original value first, then increments
+console.log(num4++);  // Output: 10 (original value before increment)
+console.log(num4);    // Output: 11 (value is updated)
+
+//postfix decrement and prefix decrement
+let num5 = 8;
+let num6 = 15;
+
+// Pre-decrement: Decrements first, then returns the new value
+console.log(--num5);  // Output: 7
+console.log(num5);    // Output: 7 (value is updated)
+
+// Post-decrement: Returns the original value first, then decrements
+console.log(num6--);  // Output: 15 (original value before decrement)
+console.log(num6);    // Output: 14 (value is updated)
+
+v) Logical operator
+let num7 = 10;
+let num8 = 5;
+
+// Logical AND (&&) → Returns true if both conditions are true
+console.log(num7 > 5 && num8 < 10);  // true (both conditions are true)
+console.log(num7 < 5 && num8 < 10);  // false (first condition is false)
+
+// Logical OR (||) → Returns true if at least one condition is true
+console.log(num7 > 5 || num8 > 10);  // true (first condition is true)
+console.log(num7 < 5 || num8 > 10);  // false (both conditions are false)
+
+// Logical NOT (!) → Reverses the boolean value
+console.log(!(num7 > 5));  // false (num7 > 5 is true, so !true → false)
+console.log(!(num8 < 2));  // true  (num8 < 2 is false, so !false → true)
+
+
+vi) Ternary Operator
+let num9 = 15;
+let num10 = 20;
+
+// Check which number is greater
+let result = (num9 > num10) ? "num9 is greater" : "num10 is greater";
+console.log(result);  // Output: "num10 is greater"
+
+// Check if num9 is even or odd
+let isEven = (num9 % 2 === 0) ? "num9 is even" : "num9 is odd";
+console.log(isEven);  // Output: "num9 is odd"
+
+// Nested ternary example
+let checkNum10 = (num10 > 10) ? (num10 > 25 ? "Greater than 25" : "Between 10 and 25") : "10 or less";
+console.log(checkNum10);  // Output: "Between 10 and 25"
+
+
+vii) Comma Operator
+let num11 = (5, 10);  
+console.log(num11);  // Output: 10 (returns the last value)
+
+let num12 = 0;
+num12 = (num12 += 2, num12 *= 3, num12 - 1);
+console.log(num12);  // Output: 5
+
+7) Explain Local Scope, Block Scope, Functional Scope and Scope ?
+
+i) Block Scope
+   -----------
+   Before ES6 (2015), JavaScript variables had only Global Scope and Function Scope.ES6 introduced two important new JavaScript keywords: let and const.These two keywords provide Block                       	Scope in JavaScript. Variables declared inside a { } block cannot be accessed from outside the block.Variables declared with the var keyword can NOT have block scope. Variables   	declared inside a { } block can be accessed from outside the block.
+
+Example:
+
+{
+  var x = 2;
+}
+// x CAN be used here
+
+ii) Local Scope
+    -----------
+	Variables declared within a JavaScript function, are LOCAL to the function.
+
+Example:
+
+// code here can NOT use carName
+
+function myFunction() {
+  let carName = "Volvo";
+  // code here CAN use carName
+}
+
+// code here can NOT use carName
+
+iii) Function Scope
+     --------------
+	 Function allows us to declare & pack a bunch of code in a block so that we can use (and reuse) a block of code in our programs. Sometimes, they take some values as `parameters` to 	 do the operation and return some value as a result of the operation.
+
+Example :
+
+function add(a, b) { 
+      
+    // a and b are the parameters of this 
+    // function code to do the operation 
+    return a + b; // return statement 
+    } 
+      
+    // Invoking the function and 2, 3 
+    // are arguments here 
+    console.log(add(2, 3)); 
+
+8) Chain in javascript?
+Chaining in JavaScript allows you to call multiple methods one after another on the same object in a single statement. It helps make code more readable and concise.
+
+i) Method Chaining Example 
+
+let message = "hello world";
+
+let result = message.toUpperCase().split(" ").join("-");
+
+console.log(result); // "HELLO-WORLD"
+
+ii) Chaining in Objects (Custom Example)
+
+class Calculator {
+    constructor(value = 0) {
+        this.value = value;
+    }
+
+    add(num) {
+        this.value += num;
+        return this; // Return `this` to enable chaining
+    }
+
+    subtract(num) {
+        this.value -= num;
+        return this;
+    }
+
+    multiply(num) {
+        this.value *= num;
+        return this;
+    }
+
+    divide(num) {
+        if (num !== 0) {
+            this.value /= num;
+        }
+        return this;
+    }
+
+    print() {
+        console.log(this.value);
+        return this;
+    }
+}
+
+// Using method chaining
+let calc = new Calculator();
+calc.add(10).subtract(2).multiply(5).divide(2).print(); // Output: 20
+
+iii) Chaining with Promises
+
+function asyncTask(value) {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(value * 2), 1000);
+    });
+}
+
+asyncTask(5)
+    .then((res) => res + 3)  // 10 + 3 = 13
+    .then((res) => res * 2)  // 13 * 2 = 26
+    .then(console.log);      // Output: 26
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
