@@ -318,39 +318,3 @@ asyncTask(5)
     .then((res) => res + 3)  // 10 + 3 = 13
     .then((res) => res * 2)  // 13 * 2 = 26
     .then(console.log);      // Output: 26
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
