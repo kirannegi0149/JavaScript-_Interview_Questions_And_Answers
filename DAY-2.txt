@@ -1,0 +1,120 @@
+1. What are objects in JavaScript?
+Ans: Objects in JavaScript are collections of key-value pairs. They store data and methods.
+
+Example:
+const person = { name: "John", age: 30, greet: () => console.log("Hello") };
+console.log(person.name); // John
+
+
+2. What are functions?
+Ans: Functions are reusable blocks of code that perform a specific task.
+
+Example:
+function add(a, b) { 
+    return a + b; 
+}
+console.log(add(5, 3)); 
+Output: 8
+
+3. What is an event loop and call stack?
+Ans: The Call Stack executes functions in order, while the Event Loop ensures asynchronous code runs after the stack is empty.
+
+Example:
+console.log("Start");
+setTimeout(() => console.log("Inside setTimeout"), 0);
+console.log("End");
+// Output: Start → End → Inside setTimeout
+
+4. What is the DOM?
+Ans: The Document Object Model (DOM) represents an HTML document as a tree structure that JavaScript can manipulate.
+
+Example:
+document.getElementById("myElement").innerText = "Hello!";
+
+
+5. Difference between undefined vs not defined vs NaN
+Ans: 
+undefined: A declared variable without a value.
+not defined: A variable that was never declared.
+NaN: Not a number, resulting from invalid math operations.
+
+Example:
+let x; console.log(x); // undefined
+console.log(y); // ReferenceError: y is not defined
+console.log("hello" / 2); // NaN
+
+6. What are arrow functions?
+Ans: Arrow functions provide a shorter syntax for defining functions.
+
+Example:
+const add = (a, b) => a + b;
+console.log(add(5, 3)); // 8
+
+7. What is the for-in loop?
+Ans: The for-in loop iterates over object properties.
+
+Syntax:
+for (let key in object) { console.log(key, object[key]); }
+
+Example:
+const obj = { a: 1, b: 2 };
+for (let key in obj) console.log(key, obj[key]);
+// Output: a 1, b 2
+
+8. Scope in JavaScript
+Ans: 
+Local Scope: Variables inside a function.
+Block Scope: let and const inside {}.
+Function Scope: var inside a function is only accessible there.
+Scope Chain: Inner functions can access outer function variables.
+
+Example:
+function outer() {  
+  let a = 10;  
+  function inner() { console.log(a); }  
+  inner();  
+}  
+outer(); // 10
+
+9. Difference between null and undefined
+Ans: 
+null: Explicitly set to nothing.
+undefined: A variable that hasn't been assigned.
+
+Example:
+let a = null;  
+let b;  
+console.log(a, b); // null, undefined
+Use null when you want to indicate no value intentionally.
+
+10. Code to explain map and filter in arrays
+Ans: 
+map(): Transforms array elements.
+filter(): Filters elements based on a condition.
+
+Example:
+const nums = [1, 2, 3, 4];
+const squared = nums.map(n => n * n);
+const evens = nums.filter(n => n % 2 === 0);
+console.log(squared); // [1, 4, 9, 16]
+console.log(evens); // [2, 4]
+
+11. Count number of 0's in an array
+Ans: 
+const arr = [0, 1, 0, 1, 0];
+const count = arr.filter(num => num === 0).length;
+console.log(count); // 3
+
+12. Count total odd and even numbers in an array
+Ans: 
+const nums = [1, 2, 3, 4, 5];
+const odd = nums.filter(n => n % 2 !== 0).length;
+const even = nums.filter(n => n % 2 === 0).length;
+console.log(`Odd: ${odd}, Even: ${even}`); 
+// Odd: 3, Even: 2
+
+13. Count number of vowels in a string
+Ans: 
+const str = "hello world";
+const vowels = str.match(/[aeiou]/gi)?.length || 0;
+console.log(vowels); // 3
